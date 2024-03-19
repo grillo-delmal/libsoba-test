@@ -1,0 +1,6 @@
+[submodule "src/libsoba"]
+	path = src/libsoba
+	url = https://github.com/Inochi2D/libsoba
+[submodule "src/i2d-cairo"]
+	path = src/i2d-cairo
+	url = https://github.com/Inochi2D/i2d-cairo
