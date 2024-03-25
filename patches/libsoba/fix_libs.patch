@@ -1,0 +1,20 @@
+diff --git a/source/soba/core/app.d b/source/soba/core/app.d
+index 5f3f390..e4bbc87 100644
+--- a/source/soba/core/app.d
++++ b/source/soba/core/app.d
+@@ -13,13 +13,13 @@ import soba.core.window;
+     Initialize Soba
+ */
+ void sbInit() {
+-    auto sdlSupport = loadSDL("libSDL2.dylib");
++    auto sdlSupport = loadSDL();
+     if (sdlSupport == SDLSupport.noLibrary)
+         throw nogc_new!Exception("Could not find a valid SDL2 library!");
+ 
+     SDL_Init(SDL_INIT_EVERYTHING);
+ 
+-    auto cairoSupport = loadCairo();
++    auto cairoSupport = loadCairo("libcairo.so.2");
+     if (cairoSupport == cairoSupport.noLibrary)
+         throw nogc_new!Exception("Could not find a valid Cairo library!");
+ }
