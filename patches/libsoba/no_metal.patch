@@ -1,0 +1,35 @@
+diff --git a/source/soba/drawing/compositors/metal.d b/source/soba/drawing/compositors/metal.d
+index 8325795..dca14d8 100644
+--- a/source/soba/drawing/compositors/metal.d
++++ b/source/soba/drawing/compositors/metal.d
+@@ -4,10 +4,12 @@ import soba.drawing.surfaces;
+ import soba.drawing.surfaces.metal;
+ import soba.drawing.compositors;
+ import numem.all;
+-import metal;
+ import inmath;
+ import soba.core.window;
+ 
++version(SbMetal):
++import metal;
++
+ struct MetalUniformData {
+     mat4 mat;
+ }
+diff --git a/source/soba/drawing/surfaces/dummy.d b/source/soba/drawing/surfaces/dummy.d
+index 801dd4e..95c32a1 100644
+--- a/source/soba/drawing/surfaces/dummy.d
++++ b/source/soba/drawing/surfaces/dummy.d
+@@ -1,9 +1,11 @@
+ module soba.drawing.surfaces.dummy;
+ import soba.drawing.common;
+ import soba.drawing.surfaces;
+-import metal;
+ import numem.all;
+ 
++version(SbMetal):
++import metal;
++
+ class SbDummySurface : SbSurface {
+ nothrow @nogc:
+ private:
