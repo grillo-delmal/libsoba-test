@@ -1,0 +1,38 @@
+diff --git a/source/soba/drawing/surfaces/dummy.d b/source/soba/drawing/surfaces/dummy.d
+index 801dd4e..8e20e13 100644
+--- a/source/soba/drawing/surfaces/dummy.d
++++ b/source/soba/drawing/surfaces/dummy.d
+@@ -1,7 +1,6 @@
+ module soba.drawing.surfaces.dummy;
+ import soba.drawing.common;
+ import soba.drawing.surfaces;
+-import metal;
+ import numem.all;
+ 
+ class SbDummySurface : SbSurface {
+@@ -11,7 +10,7 @@ public:
+     ~this() {
+     }
+ 
+-    this(SbSurfaceFormat format, size_t width, size_t height, MTLDevice device) {
++    this(SbSurfaceFormat format, size_t width, size_t height) {
+         super(format, width, height);
+     }
+ }
+\ No newline at end of file
+diff --git a/source/soba/drawing/surfaces/package.d b/source/soba/drawing/surfaces/package.d
+index 2d8ca7e..9bb80bb 100644
+--- a/source/soba/drawing/surfaces/package.d
++++ b/source/soba/drawing/surfaces/package.d
+@@ -119,5 +119,9 @@ SbSurface sbCreateSurface(SbBackingWindow backing) {
+         auto size = backing.getFramebufferSize();
+         return nogc_new!SbMetalSurface(SbSurfaceFormat.RGB, cast(size_t)size.x, cast(size_t)size.y, backing.getDevice());
+     }
+-    return null;
++    {
++        import soba.drawing.surfaces.dummy : SbDummySurface;
++        auto size = backing.getFramebufferSize();
++        return nogc_new!SbDummySurface(SbSurfaceFormat.RGB, cast(size_t)size.x, cast(size_t)size.y) ;
++    }
+ }
+\ No newline at end of file
