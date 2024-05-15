@@ -4,3 +4,9 @@
 [submodule "src/i2d-cairo"]
 	path = src/i2d-cairo
 	url = https://github.com/Inochi2D/i2d-cairo
+[submodule "src/inmath"]
+	path = src/inmath
+	url = https://github.com/Inochi2D/inmath
+[submodule "src/numem"]
+	path = src/numem
+	url = https://github.com/Inochi2D/numem

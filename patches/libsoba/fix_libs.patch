@@ -1,3 +1,16 @@
+diff --git a/canvas/soba/canvas/package.d b/canvas/soba/canvas/package.d
+index 1ac1464..72a0e58 100644
+--- a/canvas/soba/canvas/package.d
++++ b/canvas/soba/canvas/package.d
+@@ -40,7 +40,7 @@ bool cnvInit() {
+     // TODO: Try Blend2D
+ 
+     // Try Cairo
+-    CairoSupport support = loadCairo();
++    CairoSupport support = loadCairo("libcairo.so.2");
+     if (support == CairoSupport.cairo) {
+         cnvBackend = SbCanvasBackend.cairo;
+         return true;
 diff --git a/source/soba/core/app.d b/source/soba/core/app.d
 index 5f3f390..e4bbc87 100644
 --- a/source/soba/core/app.d

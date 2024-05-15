@@ -8,12 +8,15 @@
             "type": "lldb",
             "request": "launch",
             "name": "Launch soba-demo",
-            "program": "${workspaceRoot}/build_out/libsoba/soba",
+            "program": "${workspaceRoot}/build_out/app",
             "args": [],
             "cwd": "${workspaceRoot}",
             "initCommands": [
+                "settings append target.source-map /opt/src/app/ ${workspaceRoot}/src/app",
                 "settings append target.source-map /opt/src/libsoba/ ${workspaceRoot}/src/libsoba",
                 "settings append target.source-map /opt/src/i2d-cairo/ ${workspaceRoot}/src/i2d-cairo",
+                "settings append target.source-map /opt/src/inmath/ ${workspaceRoot}/src/inmath",
+                "settings append target.source-map /opt/src/numem/ ${workspaceRoot}/src/numem",
                 "settings show target.source-map"
             ]
         }

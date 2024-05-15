@@ -7,7 +7,7 @@ index 75e539f..598b563 100644
  }
  
 -CairoSupport loadCairo() {
-+CairoSupport loadCairo() @nogc {
++CairoSupport loadCairo() @nogc nothrow {
      version (Windows) {
          const(char)[][1] libNames =
              [
@@ -16,7 +16,7 @@ index 75e539f..598b563 100644
  }
  
 -CairoSupport loadCairo(const(char)* libName) {
-+CairoSupport loadCairo(const(char)* libName) @nogc {
++CairoSupport loadCairo(const(char)* libName) @nogc nothrow {
      lib = load(libName);
      if (lib == invalidHandle) {
          return CairoSupport.noLibrary;
