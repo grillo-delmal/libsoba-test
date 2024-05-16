@@ -35,9 +35,9 @@ if [ ! -z "./patches" ]; then
     popd
 fi
 
-dub add-local /opt/src/libsoba/          "$(semver /opt/src/libsoba/)"
-dub add-local /opt/src/i2d-cairo/        "$(semver /opt/src/i2d-cairo/)"
-dub add-local /opt/src/inmath/          "$(semver /opt/src/inmath/)"
+dub add-local /opt/src/libsoba/        "$(semver /opt/src/libsoba/)"
+dub add-local /opt/src/i2d-cairo/      "$(semver /opt/src/i2d-cairo/)"
+dub add-local /opt/src/inmath/         "$(semver /opt/src/inmath/)"
 dub add-local /opt/src/numem/          "$(semver /opt/src/numem/)"
 
 # Build
@@ -49,6 +49,7 @@ export DFLAGS='-g --d-debug'
 export DC='/usr/bin/ldc2'
 
 dub build
+./app
 
 popd
 popd

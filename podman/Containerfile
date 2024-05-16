@@ -11,3 +11,6 @@ RUN dnf -y install \
         ldc \
         dub
 
+# Run deps
+RUN dnf -y install \
+        cairo
