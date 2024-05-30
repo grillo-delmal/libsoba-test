@@ -1,8 +1,8 @@
-diff --git a/canvas/soba/canvas/package.d b/canvas/soba/canvas/package.d
-index 1ac1464..72a0e58 100644
---- a/canvas/soba/canvas/package.d
-+++ b/canvas/soba/canvas/package.d
-@@ -40,7 +40,7 @@ bool cnvInit() {
+diff --git a/modules/canvas/soba/canvas/package.d b/modules/canvas/soba/canvas/package.d
+index fae289d..93182dd 100644
+--- a/modules/canvas/soba/canvas/package.d
++++ b/modules/canvas/soba/canvas/package.d
+@@ -42,7 +42,7 @@ bool cnvInit() {
      // TODO: Try Blend2D
  
      // Try Cairo
@@ -11,23 +11,15 @@ index 1ac1464..72a0e58 100644
      if (support == CairoSupport.cairo) {
          cnvBackend = SbCanvasBackend.cairo;
          return true;
-diff --git a/source/soba/core/app.d b/source/soba/core/app.d
-index 5f3f390..e4bbc87 100644
---- a/source/soba/core/app.d
-+++ b/source/soba/core/app.d
-@@ -13,13 +13,13 @@ import soba.core.window;
-     Initialize Soba
- */
- void sbInit() {
--    auto sdlSupport = loadSDL("libSDL2.dylib");
-+    auto sdlSupport = loadSDL();
-     if (sdlSupport == SDLSupport.noLibrary)
-         throw nogc_new!Exception("Could not find a valid SDL2 library!");
+diff --git a/source/soba/core/package.d b/source/soba/core/package.d
+index 067eeb7..3e2ccf2 100644
+--- a/source/soba/core/package.d
++++ b/source/soba/core/package.d
+@@ -24,5 +24,5 @@ void sbInit() {
  
      SDL_Init(SDL_INIT_EVERYTHING);
  
--    auto cairoSupport = loadCairo();
-+    auto cairoSupport = loadCairo("libcairo.so.2");
-     if (cairoSupport == cairoSupport.noLibrary)
-         throw nogc_new!Exception("Could not find a valid Cairo library!");
+-    loadCairo();
++    loadCairo("libcairo.so.2");
  }
+\ No newline at end of file

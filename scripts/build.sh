@@ -12,6 +12,7 @@ cd /opt
 mkdir -p src
 
 rsync -azh /opt/orig/app/ /opt/src/app/
+rsync -azh /opt/orig/app2/ /opt/src/app2/
 
 rsync -azh /opt/orig/libsoba/ /opt/src/libsoba/
 rsync -azh /opt/orig/i2d-cairo/ /opt/src/i2d-cairo/
@@ -25,10 +26,12 @@ if [ ! -z "./patches" ]; then
     if [ ! -z "$(ls -A */ 2> /dev/null)" ]; then
         for d in */ ; do
             if [ ! -z "$(ls -A $d 2> /dev/null)" ]; then
-                for p in ${d}*.patch; do
-                    echo "patch /opt/patches/$p"
-                    (cd /opt/src/${d}; patch -p1 < /opt/patches/$p)
-                done
+                if [ ! -z "$(ls -A /opt/src/${d} 2> /dev/null)" ]; then
+                    for p in ${d}*.patch; do
+                        echo "patch /opt/patches/$p"
+                        (cd /opt/src/${d}; patch -p1 < /opt/patches/$p)
+                    done
+                fi
             fi
         done
     fi
@@ -41,7 +44,6 @@ dub add-local /opt/src/inmath/         "$(semver /opt/src/inmath/)"
 dub add-local /opt/src/numem/          "$(semver /opt/src/numem/)"
 
 # Build
-
 pushd src
 pushd app
 
@@ -54,7 +56,31 @@ dub build
 popd
 popd
 
+pushd src
+pushd libsoba
+
+export DFLAGS='-g --d-debug'
+export DC='/usr/bin/ldc2'
+
+dub build
+
+popd
+popd
+
+pushd src
+pushd app2
+
+export DFLAGS='-g --d-debug'
+export DC='/usr/bin/ldc2'
+
+#dub build
+
+popd
+popd
+
 
 # Get results
 
-rsync -azh /opt/src/app/ /opt/out/
+rsync -azh /opt/src/app/ /opt/out/app
+rsync -azh /opt/src/app2/ /opt/out/app2
+rsync -azh /opt/src/libsoba/ /opt/out/libsoba

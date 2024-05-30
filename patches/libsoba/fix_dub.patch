@@ -1,0 +1,33 @@
+diff --git a/dub.sdl b/dub.sdl
+index f257524..8038e45 100644
+--- a/dub.sdl
++++ b/dub.sdl
+@@ -40,7 +40,8 @@ subPackage {
+ 	
+ 	targetPath "out/"
+ 	targetName "sc"
+-	sourcePaths "modules/canvas/soba/"
++	sourcePaths "modules/canvas/"
++	importPaths "modules/canvas/"
+ }
+ 
+ // soba:ssk
+@@ -59,7 +60,8 @@ subPackage {
+ 
+ 	targetPath "out/"
+ 	targetName "ssk"
+-	sourcePaths "modules/ssk/soba/"
++	sourcePaths "modules/ssk/"
++	importPaths "modules/ssk/"
+ 
+ 	// Apple platforms have metal support
+ 	configuration "apple" {
+@@ -70,7 +72,7 @@ subPackage {
+ 
+ 	// Every other platform than apple
+ 	configuration "portable" {
+-		excludedSourceFiles "modules/ssk/soba/metal/*.*"
++		excludedSourceFiles "modules/ssk/soba/ssk/metal/*.*"
+ 	}
+ }
+ 

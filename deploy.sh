@@ -16,6 +16,7 @@ podman run -ti --rm \
     -v $(pwd)/scripts:/opt/scripts/:ro,Z \
     -v $(pwd)/.git:/opt/.git/:ro,Z \
     -v $(pwd)/src/app:/opt/orig/app/:ro,Z \
+    -v $(pwd)/src/app2:/opt/orig/app2/:ro,Z \
     -v $(pwd)/src/libsoba:/opt/orig/libsoba/:ro,Z \
     -v $(pwd)/src/i2d-cairo:/opt/orig/i2d-cairo/:ro,Z \
     -v $(pwd)/src/inmath:/opt/orig/inmath/:ro,Z \

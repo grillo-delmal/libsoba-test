@@ -7,4 +7,4 @@ license "BSD 2-clause"
 
 dependency "numem" version="*"
 dependency "inmath" version="*"
-dependency "soba:canvas" version="*"
+dependency "soba" version="*"
