@@ -10,3 +10,6 @@
 [submodule "src/numem"]
 	path = src/numem
 	url = https://github.com/Inochi2D/numem
+[submodule "src/i2d-harfbuzz"]
+	path = src/i2d-harfbuzz
+	url =  https://github.com/Inochi2D/i2d-harfbuzz
