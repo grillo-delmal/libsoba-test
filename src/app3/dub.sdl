@@ -1,0 +1,8 @@
+name "app"
+
+description "A minimal D application."
+authors "Grillo del Mal"
+copyright "Copyright © 2022, Grillo del Mal"
+license "BSD 2-clause"
+
+dependency "i2d-harfbuzz" version="1.0.0"
