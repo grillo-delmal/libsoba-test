@@ -13,4 +13,5 @@ RUN dnf -y install \
 
 # Run deps
 RUN dnf -y install \
-        cairo
+        cairo \
+        blend2d

@@ -1,0 +1,10 @@
+name "app"
+
+description "A minimal D application."
+authors "Grillo del Mal"
+copyright "Copyright © 2022, Grillo del Mal"
+license "BSD 2-clause"
+
+dependency "numem" version="*"
+dependency "inmath" version="*"
+dependency "soba:canvas" version="*"

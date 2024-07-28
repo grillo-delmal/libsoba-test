@@ -11,8 +11,7 @@ find /opt/out/ -mindepth 1 -maxdepth 1 -exec rm -r -- {} +
 cd /opt
 mkdir -p src
 
-rsync -azh /opt/orig/app/ /opt/src/app/
-rsync -azh /opt/orig/app2/ /opt/src/app2/
+rsync -azh /opt/orig/tests/ /opt/src/tests/
 
 rsync -azh /opt/orig/libsoba/ /opt/src/libsoba/
 rsync -azh /opt/orig/i2d-blend2d/ /opt/src/i2d-blend2d/
@@ -48,35 +47,26 @@ dub add-local /opt/src/inmath/         "$(semver /opt/src/inmath/)"
 dub add-local /opt/src/numem/          "$(semver /opt/src/numem/)"
 
 # Build
-pushd src
-pushd app
-
 export DFLAGS='-g --d-debug'
 export DC='/usr/bin/ldc2'
 
-dub build || true
-./app || true
-
-popd
-popd
-
 pushd src
-pushd app2
+pushd tests
+    if [ ! -z "$(ls -A */ 2> /dev/null)" ]; then
+        for d in */ ; do
+            pushd $d
+            echo "running $d"
 
-export DFLAGS='-g --d-debug'
-export DC='/usr/bin/ldc2'
-
-dub build || true
-
+            dub build || true
+            ./app || true
+            popd
+        done
+    fi
 popd
 popd
-
 
 pushd src
 pushd libsoba
-
-export DFLAGS='-g --d-debug'
-export DC='/usr/bin/ldc2'
 
 dub build || true
 
@@ -85,6 +75,5 @@ popd
 
 # Get results
 
-rsync -azh /opt/src/app/ /opt/out/app
-rsync -azh /opt/src/app2/ /opt/out/app2
+rsync -azh /opt/src/tests/ /opt/out/tests
 rsync -azh /opt/src/libsoba/ /opt/out/libsoba

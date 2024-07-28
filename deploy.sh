@@ -15,8 +15,7 @@ podman run -ti --rm \
     -v $(pwd)/patches:/opt/patches/:ro,Z \
     -v $(pwd)/scripts:/opt/scripts/:ro,Z \
     -v $(pwd)/.git:/opt/.git/:ro,Z \
-    -v $(pwd)/src/tests/soba-canvas-cairo:/opt/orig/app/:ro,Z \
-    -v $(pwd)/src/tests/soba:/opt/orig/app2/:ro,Z \
+    -v $(pwd)/src/tests:/opt/orig/tests/:ro,Z \
     -v $(pwd)/src/libsoba:/opt/orig/libsoba/:ro,Z \
     -v $(pwd)/src/i2d-blend2d:/opt/orig/i2d-blend2d/:ro,Z \
     -v $(pwd)/src/i2d-cairo:/opt/orig/i2d-cairo/:ro,Z \
