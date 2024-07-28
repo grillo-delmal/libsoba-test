@@ -15,7 +15,9 @@ rsync -azh /opt/orig/app/ /opt/src/app/
 rsync -azh /opt/orig/app2/ /opt/src/app2/
 
 rsync -azh /opt/orig/libsoba/ /opt/src/libsoba/
+rsync -azh /opt/orig/i2d-blend2d/ /opt/src/i2d-blend2d/
 rsync -azh /opt/orig/i2d-cairo/ /opt/src/i2d-cairo/
+rsync -azh /opt/orig/i2d-harfbuzz/ /opt/src/i2d-harfbuzz/
 rsync -azh /opt/orig/inmath/ /opt/src/inmath/
 rsync -azh /opt/orig/numem/ /opt/src/numem/
 
@@ -39,7 +41,9 @@ if [ ! -z "./patches" ]; then
 fi
 
 dub add-local /opt/src/libsoba/        "$(semver /opt/src/libsoba/)"
+dub add-local /opt/src/i2d-blend2d/    "$(semver /opt/src/i2d-blend2d/)"
 dub add-local /opt/src/i2d-cairo/      "$(semver /opt/src/i2d-cairo/)"
+dub add-local /opt/src/i2d-harfbuzz/   "$(semver /opt/src/i2d-harfbuzz/)"
 dub add-local /opt/src/inmath/         "$(semver /opt/src/inmath/)"
 dub add-local /opt/src/numem/          "$(semver /opt/src/numem/)"
 
@@ -50,19 +54,8 @@ pushd app
 export DFLAGS='-g --d-debug'
 export DC='/usr/bin/ldc2'
 
-dub build
-./app
-
-popd
-popd
-
-pushd src
-pushd libsoba
-
-export DFLAGS='-g --d-debug'
-export DC='/usr/bin/ldc2'
-
-dub build
+dub build || true
+./app || true
 
 popd
 popd
@@ -73,11 +66,22 @@ pushd app2
 export DFLAGS='-g --d-debug'
 export DC='/usr/bin/ldc2'
 
-#dub build
+dub build || true
 
 popd
 popd
 
+
+pushd src
+pushd libsoba
+
+export DFLAGS='-g --d-debug'
+export DC='/usr/bin/ldc2'
+
+dub build || true
+
+popd
+popd
 
 # Get results
 

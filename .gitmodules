@@ -13,3 +13,6 @@
 [submodule "src/i2d-harfbuzz"]
 	path = src/i2d-harfbuzz
 	url =  https://github.com/Inochi2D/i2d-harfbuzz
+[submodule "src/i2d-blend2d"]
+	path = src/i2d-blend2d
+	url = https://github.com/Inochi2D/i2d-blend2d

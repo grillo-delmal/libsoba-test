@@ -8,10 +8,12 @@ import inmath;
 import std.stdio;
 
 void main() {
-    writeln(cnvInit());
+    cnvInit(SbCanvasBackend.cairo);
 
-    shared_ptr!SbCanvas canvas = SbCanvas.create(SbCanvasFormat.ARGB32, 124, 124);
-    shared_ptr!SbContext ctx = SbContext.create(canvas);
+    SbImage image = new SbImage(124, 124, SbImageFormat.RGBA32);
+    SbContext ctx = SbContext.create();
+
+    ctx.begin(image);
 
     ctx.roundRect(rect(26, 42, 82, 60), 8);
     ctx.setSource(vec4(0, (0x80 + 0.0f)/0xFF, 0, 1));
@@ -67,5 +69,7 @@ void main() {
     ctx.setSource(vec4(0, (0x80 + 0.0f)/0xFF, 0, 1));
     ctx.stroke();
 
-    canvas.writeToFile(nstring("test.png"));
+    ctx.end();
+
+    image.writeToFile(nstring("test.png"));
 }
