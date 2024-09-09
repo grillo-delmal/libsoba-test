@@ -1,8 +1,10 @@
-name "app"
+name "harfbuzz_test"
 
 description "A minimal D application."
 authors "Grillo del Mal"
 copyright "Copyright © 2022, Grillo del Mal"
 license "BSD 2-clause"
+
+targetType "executable"
 
 dependency "i2d-harfbuzz" version="1.0.0"

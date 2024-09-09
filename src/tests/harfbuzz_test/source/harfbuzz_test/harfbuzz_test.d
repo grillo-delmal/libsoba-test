@@ -1,4 +1,4 @@
-module app;
+module harfbuzz_test;
 import harfbuzz;
 import std.stdio;
 
@@ -34,7 +34,7 @@ int main() {
     // 3. Create a face and a font from a font file. 
     writeln("3");
 
-    hb_blob_t *blob = hb_blob_create_from_file("NotoSans-Regular.ttf"); /* or hb_blob_create_from_file_or_fail() */
+    hb_blob_t *blob = hb_blob_create_from_file("noto.ttf"); /* or hb_blob_create_from_file_or_fail() */
     hb_face_t *face = hb_face_create(blob, 0);
     hb_font_t *font = hb_font_create(face);
 
