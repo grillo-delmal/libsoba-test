@@ -16,3 +16,6 @@
 [submodule "src/i2d-blend2d"]
 	path = src/i2d-blend2d
 	url = https://github.com/Inochi2D/i2d-blend2d
+[submodule "src/bindbc-gles"]
+	path = src/bindbc-gles
+	url = https://github.com/DannyArends/bindbc-gles.git

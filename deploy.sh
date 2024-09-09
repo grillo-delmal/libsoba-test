@@ -17,6 +17,7 @@ podman run -ti --rm \
     -v $(pwd)/.git:/opt/.git/:ro,Z \
     -v $(pwd)/src/tests:/opt/orig/tests/:ro,Z \
     -v $(pwd)/src/libsoba:/opt/orig/libsoba/:ro,Z \
+    -v $(pwd)/src/bindbc-gles:/opt/orig/bindbc-gles/:ro,Z \
     -v $(pwd)/src/i2d-blend2d:/opt/orig/i2d-blend2d/:ro,Z \
     -v $(pwd)/src/i2d-cairo:/opt/orig/i2d-cairo/:ro,Z \
     -v $(pwd)/src/i2d-harfbuzz:/opt/orig/i2d-harfbuzz/:ro,Z \

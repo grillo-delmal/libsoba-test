@@ -14,6 +14,7 @@ mkdir -p src
 rsync -azh /opt/orig/tests/ /opt/src/tests/
 
 rsync -azh /opt/orig/libsoba/ /opt/src/libsoba/
+rsync -azh /opt/orig/bindbc-gles/ /opt/src/bindbc-gles/
 rsync -azh /opt/orig/i2d-blend2d/ /opt/src/i2d-blend2d/
 rsync -azh /opt/orig/i2d-cairo/ /opt/src/i2d-cairo/
 rsync -azh /opt/orig/i2d-harfbuzz/ /opt/src/i2d-harfbuzz/
@@ -40,6 +41,7 @@ if [ ! -z "./patches" ]; then
 fi
 
 dub add-local /opt/src/libsoba/        "$(semver /opt/src/libsoba/)"
+dub add-local /opt/src/bindbc-gles/    "$(semver /opt/src/bindbc-gles/)"
 dub add-local /opt/src/i2d-blend2d/    "$(semver /opt/src/i2d-blend2d/)"
 dub add-local /opt/src/i2d-cairo/      "$(semver /opt/src/i2d-cairo/)"
 dub add-local /opt/src/i2d-harfbuzz/   "$(semver /opt/src/i2d-harfbuzz/)"
@@ -53,13 +55,15 @@ export DC='/usr/bin/ldc2'
 pushd src
 pushd tests
     if [ ! -z "$(ls -A */ 2> /dev/null)" ]; then
-        for d in */ ; do
-            pushd $d
-            echo "running $d"
+        for d in * ; do
+            if [ -d "$d" ]; then
+                pushd $d
+                echo "running $d"
 
-            dub build || true
-            ./app || true
-            popd
+                dub build || true
+                ./$d || true
+                popd
+            fi
         done
     fi
 popd
@@ -69,6 +73,7 @@ pushd src
 pushd libsoba
 
 dub build || true
+dub build --config="demo" || true
 
 popd
 popd

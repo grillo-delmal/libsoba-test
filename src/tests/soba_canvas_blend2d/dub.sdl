@@ -1,10 +1,12 @@
-name "app"
+name "soba_canvas_blend2d"
 
 description "A minimal D application."
 authors "Grillo del Mal"
 copyright "Copyright © 2022, Grillo del Mal"
 license "BSD 2-clause"
 
+targetType "executable"
+
 dependency "numem" version="*"
 dependency "inmath" version="*"
-dependency "soba" version="*"
+dependency "soba:canvas" version="*"

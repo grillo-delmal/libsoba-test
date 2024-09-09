@@ -1,4 +1,4 @@
-module app;
+module soba_canvas_cairo;
 
 import soba.canvas;
 
@@ -8,7 +8,7 @@ import inmath;
 import std.stdio;
 
 void main() {
-    cnvInit(SbCanvasBackend.cairo);
+    cnvInit();
 
     SbImage image = new SbImage(124, 124, SbImageFormat.RGBA32);
     SbContext ctx = SbContext.create();

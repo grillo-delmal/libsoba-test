@@ -1,0 +1,28 @@
+diff --git a/dub.sdl b/dub.sdl
+index cece8c5..dda484e 100644
+--- a/dub.sdl
++++ b/dub.sdl
+@@ -4,8 +4,8 @@ authors "Inochi2D Project"
+ copyright "Copyright © 2023-2024, Inochi2D Project"
+ license "BSD 2-clause"
+ 
+-dependency "numem" version="~>0.9.1"
+-dependency "inmath" version="~>1.2.1"
++dependency "numem" version="*"
++dependency "inmath" version="*"
+ dependency "soba:canvas" version="*"
+ dependency "soba:ssk" version="*"
+ dependency "soba:sio" version="*"
+diff --git a/modules/sio/dub.sdl b/modules/sio/dub.sdl
+index a40b4b6..717b756 100644
+--- a/modules/sio/dub.sdl
++++ b/modules/sio/dub.sdl
+@@ -4,7 +4,7 @@ authors "Inochi2D Project"
+ copyright "Copyright © 2024, Inochi2D Project"
+ license "BSD-2-Clause"
+ 
+-dependency "numem" version="~>0.8.3"
++dependency "numem" version="*"
+ dependency "bindbc-sdl" version="~>1.4.6"
+ dependency "inmath" version="*"
+ dependency "intel-intrinsics" version="~>1.11.18"

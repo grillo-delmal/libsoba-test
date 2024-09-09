@@ -1,0 +1,15 @@
+diff --git a/source/cairo/loader.d b/source/cairo/loader.d
+index 417137b..f52c542 100644
+--- a/source/cairo/loader.d
++++ b/source/cairo/loader.d
+@@ -38,8 +38,8 @@ CairoSupport loadCairo() {
+     } else version (Posix) {
+         const(char)[][2] libNames =
+             [
+-                "libcairo.so",
+-                "/usr/local/lib/libcairo.so",
++                "libcairo.so.0",
++                "/usr/local/lib/libcairo.so.0",
+             ];
+     } else
+         static assert(0, "libcairo is not yet supported on this platform.");

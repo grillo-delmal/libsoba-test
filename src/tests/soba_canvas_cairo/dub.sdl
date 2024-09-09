@@ -1,9 +1,11 @@
-name "app"
+name "soba_canvas_cairo"
 
 description "A minimal D application."
 authors "Grillo del Mal"
 copyright "Copyright © 2022, Grillo del Mal"
 license "BSD 2-clause"
+
+targetType "executable"
 
 dependency "numem" version="*"
 dependency "inmath" version="*"

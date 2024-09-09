@@ -1,0 +1,17 @@
+diff --git a/source/blend2d/loader.d b/source/blend2d/loader.d
+index 90fc61c..a132ac7 100644
+--- a/source/blend2d/loader.d
++++ b/source/blend2d/loader.d
+@@ -43,9 +43,9 @@ nothrow @nogc:
+         } else version (Posix) {
+             const(char)[][3] libNames =
+                 [
+-                    "libblend2d.so",
+-                    "/usr/local/lib/libblend2d.so",
+-                    "/lib/libblend2d.so"
++                    "libblend2d.so.0",
++                    "/usr/local/lib/libblend2d.so.0",
++                    "/lib/libblend2d.so.0"
+                 ];
+         } else
+             static assert(0, "Blend2D is not yet supported on this platform.");
